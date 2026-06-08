@@ -41,7 +41,6 @@ AKAKCE_CELLS = {
     "tl":     "E10",
     "isim":   "E15",
     "tc":     "E16",
-    "gr2":    "E17",  # gram tekrar (şablonda iki yerde varsa)
     "adres":  "E18",
 }
 
@@ -204,13 +203,11 @@ def run_job(islem_turu, input_bytes, group_mode, progress_bar, status_text) -> b
 
             c = AKAKCE_CELLS
             if tarih     is not None: ws_tmp[c["tarih"]].value  = tarih
-            ws_tmp[c["yer"]].value = "Fatih / İstanbul"
             if fatura    is not None: ws_tmp[c["fatura"]].value = fatura
             if gr        is not None: ws_tmp[c["gr"]].value     = gr
             if tl        is not None: ws_tmp[c["tl"]].value     = tl
             if kisa_isim:             ws_tmp[c["isim"]].value   = kisa_isim
             if tc_or_vkn is not None: ws_tmp[c["tc"]].value     = tc_or_vkn
-            if gr        is not None: ws_tmp[c["gr2"]].value    = gr
             if adres     is not None: ws_tmp[c["adres"]].value  = adres
 
             ws_tmp[c["tl"]].number_format = '#,##0.00'
