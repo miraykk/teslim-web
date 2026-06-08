@@ -413,7 +413,7 @@ def main():
     # ─ Dosya yükleme ─
     uploaded = st.file_uploader(
         "📂 Esnek Rapor (.xlsx) yükle",
-        type=["xlsx"],
+        type=None,
         help="İlk satır başlık olmalı. Fatura No kolonu boş olan satırlar atlanır.",
     )
 
