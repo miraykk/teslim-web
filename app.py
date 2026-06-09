@@ -71,6 +71,14 @@ def first_non_empty(ws, row: int, cols: List[int]):
     return None
 
 
+def temizle_adres(adres: str) -> str:
+    if not adres:
+        return ""
+    s = str(adres).strip()
+    s = re.sub(r"\s*Mah\.\s+No:\s+Daire:\s*", " ", s, flags=re.IGNORECASE).strip()
+    return s
+
+
 def kisa_firma_adi(name: str) -> str:
     if not name:
         return ""
@@ -191,7 +199,7 @@ def run_job(islem_turu, input_bytes, group_mode, progress_bar, status_text) -> b
             tarih     = ws_in.cell(r, TARIH_COL).value
             fatura    = ws_in.cell(r, FATURA_COL).value
             isim      = ws_in.cell(r, ISIM_COL).value
-            adres     = ws_in.cell(r, ADRES_COL).value
+            adres     = temizle_adres(ws_in.cell(r, ADRES_COL).value)
             tc_or_vkn = first_non_empty(ws_in, r, TC_COLS)
             gr        = ws_in.cell(r, GR_COL).value
             tl        = ws_in.cell(r, TL_COL).value
